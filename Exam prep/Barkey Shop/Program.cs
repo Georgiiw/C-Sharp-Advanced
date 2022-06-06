@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Barkey_Shop
+namespace Bakery_Shop
 {
     internal class Program
     {
@@ -21,7 +21,7 @@ namespace Barkey_Shop
             Queue<double> waterCount = new Queue<double>(water);
             Stack<double> flourCount = new Stack<double>(flour);
 
-            Dictionary<string, int> bekaryResult = new Dictionary<string, int>
+            Dictionary<string, int> bakeryResult = new Dictionary<string, int>
             {
                 {"Croissant", 0 },
                 {"Muffin", 0 },
@@ -35,25 +35,25 @@ namespace Barkey_Shop
                 double currFlour = flourCount.Peek();
                 if (Croissant(currFlour, currWater))
                 {
-                    bekaryResult["Croissant"]++;
+                    bakeryResult["Croissant"]++;
                     flourCount.Pop();
                     waterCount.Dequeue();
                 }
                 else if (Muffin(currFlour, currWater))
                 {
-                    bekaryResult["Muffin"]++;
+                    bakeryResult["Muffin"]++;
                     flourCount.Pop();
                     waterCount.Dequeue();
                 }
                 else if (Baguette(currFlour, currWater))
                 {
-                    bekaryResult["Baguette"]++;
+                    bakeryResult["Baguette"]++;
                     flourCount.Pop();
                     waterCount.Dequeue();
                 }
                 else if (Bagel(currFlour, currWater))
                 {
-                    bekaryResult["Bagel"]++;
+                    bakeryResult["Bagel"]++;
                     flourCount.Pop();
                     waterCount.Dequeue();
                 }
@@ -62,12 +62,12 @@ namespace Barkey_Shop
                     double currentFlour = flourCount.Pop();
                     double currentWater = waterCount.Dequeue();
                     double flourReduced = currFlour - currWater;
-                    bekaryResult["Croissant"]++;
+                    bakeryResult["Croissant"]++;
                     flourCount.Push(flourReduced);
                 }
 
             }
-            foreach (var item in bekaryResult.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
+            foreach (var item in bakeryResult.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
             {
                 if (item.Value > 0)
                 {
